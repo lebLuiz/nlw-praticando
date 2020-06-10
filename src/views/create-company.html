@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-create-company" %}
+
+{% block title %}
+    <h1>Cadastrar Empresa</h1>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/styles/create-company.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+{% endblock styles %}
+
+{% block content %}
+    {% include "partials/page-header.html" %}
+    <form action="/savecompany" method="POST">
+
+        <h1>Cadastro de Empresa</h1>
+
+        <fieldset>
+            <legend>
+                <h2>Dados da Entidade</h2>
+            </legend>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="empresa">Nome da Empresa</label>
+                    <input type="text" name="empresa" required="required">
+                </div>
+
+                <div class="field">
+                    <label for="image">Imagem da Empresa</label>
+                    <input type="url" name="image" placeholder="http://" required="required">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" name="cpnj" required="required">
+                </div>
+
+                <div class="field">
+                    <label for="responsible">Responável</label>
+                    <input type="text" name="responsible" required="required">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="address">Endereço</label>
+                    <input type="text" name="address" required="required">
+                </div>
+
+                <div class="field">
+                    <label for="address2">Número/Complemento</label>
+                    <input type="text" name="address2" required="required">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="state">Estado</label>
+                    <select name="uf" required="required">
+                        <option value="">Selecione o Estado</option>
+                    </select>
+
+                    <input type="hidden" name="state">
+                </div>
+
+                <div class="field">
+                    <label for="city">Cidade</label>
+                    <select name="city" disabled="disabled" required="required">
+                        <option value="">Selecione a Cidade</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h2>Ramos de Atuação</h2>
+                <span>Selecione um ou mais ramos <br> que sua empresa está relacionada</span>
+            </legend>
+
+            <div class="items-grid">
+                <li data-id="Algo1">
+                    <img src="/assets/industria_avatar.gif" alt="algo" width="200">
+                    <span>Algum Ramo</span>
+                </li>
+
+                <li data-id="Algo2">
+                    <img src="/assets/industria_avatar.gif" alt="algo" width="200">
+                    <span>Algum Ramo</span>
+                </li>
+
+                <li data-id="Algo3">
+                    <img src="/assets/industria_avatar.gif" alt="algo" width="200">
+                    <span>Algum Ramo</span>
+                </li>
+
+                <li data-id="Algo4">
+                    <img src="/assets/industria_avatar.gif" alt="algo" width="200">
+                    <span>Algum Ramo</span>
+                </li>
+
+                <li data-id="Algo5">
+                    <img src="/assets/industria_avatar.gif" alt="algo" width="200">
+                    <span>Algum Ramo</span>
+                </li>
+
+                <li data-id="Algo6">
+                    <img src="/assets/industria_avatar.gif" alt="algo" width="200">
+                    <span>Algum Ramo</span>
+                </li>
+            </div>
+
+            <input type="hidden" name="items">
+        </fieldset>
+
+        <button type="submit">Cadastrar Empresa</button>
+
+    </form>
+
+{% endblock content %}
+
+{% block modal %}
+    {% if saved %}
+        {% include "partials/company-created.html" %}
+    {% endif %}
+{% endblock modal %}
+
+{% block scripts %}
+    <script src="/sripts/create-company.js"></script>
+{% endblock scripts %}

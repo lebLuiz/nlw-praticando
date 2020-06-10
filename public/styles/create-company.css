@@ -1,0 +1,80 @@
+#page-create-company {
+    width: 90%;
+    max-width: 1100px;
+
+    /*Alinhamento de caixa pelo lado externo*/
+    margin: 0 auto;
+}
+
+#page-create-company header {
+    margin-top: 48px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#page-create-company header a {
+    color: var(--title-color);
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+}
+
+#page-create-company header a span {
+    margin-right: 16px;
+    background-image: url('../assets/arrow-left.svg');
+
+    display: flex;
+
+    width: 20px;
+    height: 24px;
+}
+
+form {
+    background-color: whitesmoke;
+
+    margin: 80px auto;
+
+    /*Preenchimento interno*/
+    padding: 64px;
+
+    border-radius: 10px;
+
+    max-width: 760px;
+}
+
+form h1 {
+    font-size: 36px;
+}
+
+form fieldset {
+    margin-top: 64px;
+
+    border: 0;
+}
+
+form legend {
+    margin-bottom: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+form legend h2 {
+    font-size: 25px;
+}
+
+form legend span {
+    font-size: 14.5px;
+    font-family: sans-serif;
+
+    color: var(--title-color);
+
+    margin-right: 20px;
+}
+

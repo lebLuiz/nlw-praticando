@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-home" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+{% endblock styles %}
+
+{% block content %}
+
+    <div class="content">
+
+    <header>
+        <img src="/assets/logo-company.png" alt="Company Logo">
+
+        <a href="/create-company">
+            <span></span>
+            Cadastre uma Empresa
+        </a>
+    </header>
+
+    <main>
+        <h1>Sua empresa compartilhada</h1>
+
+        <p>Ajudamos empresários a divulgar sua empresa de forma coletiva.</p>
+
+        <a href="#">
+            <span></span>
+            <strong>Pesquisar empresas</strong>
+        </a>
+    </main>
+
+    </div>
+
+{% endblock content %}
+
+{% block modal %}
+    {% include "partials/modal.html" %}
+{% endblock modal %}
+
+{% block scripts %}
+    <script src="/scripts/index.js"></script>
+{% endblock scripts %}
