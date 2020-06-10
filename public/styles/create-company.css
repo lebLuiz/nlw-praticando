@@ -34,11 +34,12 @@
 
 form {
     background-color: whitesmoke;
+    box-shadow: 3px 1px 6px 4px #255c3e;
 
-    margin: 80px auto;
+    margin: 50px auto;
 
     /*Preenchimento interno*/
-    padding: 64px;
+    padding: 60px;
 
     border-radius: 10px;
 
@@ -78,3 +79,102 @@ form legend span {
     margin-right: 20px;
 }
 
+form .field {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 25px;
+}
+form .field-group {
+    display: flex;
+}
+
+form input,
+form select {
+    background-color: #f0f0f5;
+
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+
+    border-radius: 8px;
+}
+
+/* Esses 'appeareance' server para tirar toda parte do Browser*/
+form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+form label {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/*  Pega o field que vier seguido de um field - nesse caso, mexeu com o segundo field.
+    Deixa um espaço horizontal entre os field*/
+form .field-group .field + .field {
+    margin-left: 24px;
+}
+
+form button {
+    width: 260px;
+    height: 56px;
+
+    background-color: var(--primary-color);
+    border-radius: 8px;
+
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+
+    border: 0;
+
+    margin-top: 40px;
+
+    transition: background-color 400ms;
+}
+
+form button:hover {
+    background-color: #255c3e;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.items-grid li {
+    background-color: white;
+    list-style: none;
+
+    border: 2px solid rgba(0, 0, 0, 0.61);
+    border-radius: 8px;
+
+    height: 180px;
+
+    padding: 32px 24px 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.items-grid li.selected {
+    background-attachment: #e1faec;
+    border: 2px solid #255c3e;
+}
+
+.items-grid li img,
+.items-grid li span {
+    pointer-events: none;
+}

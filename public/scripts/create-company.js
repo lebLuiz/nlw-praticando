@@ -28,7 +28,7 @@ populateUf()
 function getCities(event) {
     //pegando os seletores no HTML
     const citySelect = document.querySelector("select[name=city]");
-    const stateInput = document.querySelector("select[name=state]");
+    const stateInput = document.querySelector("input[name=state]");
 
     //capturando o evento - os estados.
     const ufValue = event.target.value;
