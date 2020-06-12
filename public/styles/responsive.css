@@ -1,0 +1,52 @@
+@media (max-width: 1000px) { 
+    #page-home {
+        background-position-x: 70vw;
+    }
+    #page-home .content {
+        align-items: center;
+        text-align: center;
+    }
+    #page-home header a {
+        position: initial;
+        bottom: 45px;
+
+        left: 50%;
+        transform: translateZ(-50%);
+    }
+    #page-home main {
+        align-items: initial;
+    }
+    
+    #page-create-company .field-group {
+        flex-direction: column;
+    }
+    #page-create-company .field-group .field + .field {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 670px) {
+    #page-create-company .items-grid {
+        grid-template-columns: 1fr 1fr;
+        flex-direction: column;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 335px) {
+    #page-home header a span {
+        display: none;
+    }
+}
+
+@media (min-width: 1700px) {
+    #page-home {
+        background-position-x: 50vw;
+    }
+}
+
+@media (max-height: 760px) {
+    #page-home {
+        background-position-y: 200px;
+    }
+}

@@ -27,23 +27,23 @@ populateUf()
 // Aqui é criado uma function para pegar as cidades (após inserir o estado)
 function getCities(event) {
     //pegando os seletores no HTML
-    const citySelect = document.querySelector("select[name=city]");
-    const stateInput = document.querySelector("input[name=state]");
+    const citySelect = document.querySelector("select[name=city]")
+    const stateInput = document.querySelector("input[name=state]")
 
     //capturando o evento - os estados.
-    const ufValue = event.target.value;
+    const ufValue = event.target.value
 
     //capturando a posição do evento - 'qual estado?!'
-    const indexOfSelectedState = event.target.selectedIndex;
+    const indexOfSelectedState = event.target.selectedIndex
 
-    stateInput.value = event.target.options[indexOfSelectedState].text;
+    stateInput.value = event.target.options[indexOfSelectedState].text
 
     //passando o estado na URL de busca
-    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`;
+    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
 
     //Liberando o campo para ser preenchido
-    citySelect.innerHTML = "<option value>Selecione a Cidade</option>";
-    citySelect.disable = true;
+    citySelect.innerHTML = "<option value>Selecione a Cidade</option>"
+    citySelect.disabled = true
 
     /*O Fetch fornece uma definição genérica de objetos de Request e Response 
     (e outras coisas envolvidas com solicitações de rede). Isso permitirá que
@@ -61,7 +61,7 @@ function getCities(event) {
         }
 
         //abilitando a propriedade 'disable' do campo 'Cidade'
-        citySelect.disable = false;
+        citySelect.disabled = false
 
     } )
 }
@@ -122,5 +122,4 @@ function handleSelectedItem(event){
 
     //atualizar o campo escondido com os itens selecionados
     collectedItems.value = selectedItems
-
 }

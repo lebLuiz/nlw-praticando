@@ -33,9 +33,16 @@
 }
 
 #page-home header a {
+    background-color: #255c3e57;
+    padding: 10px;
+    border-radius: 20px 0 20px 0;
+
     display: flex;
     color: var(--title-color);
     font-weight: 700;
+}
+#page-home header a:hover {
+    background-color: #508d6b57;
 }
 
 #page-home header a span {
@@ -72,7 +79,7 @@
     max-width: 320px;
     height: 72px;
 
-    border-radius: 8px;
+    border-radius: 0 20px 0 20px;
 
     display: flex;
     align-items: center;
@@ -85,7 +92,7 @@
 }
 
 #page-home main a:hover{
-    background-color: rgba(0, 0, 0, 0.774);
+    background-color: #255c3e;
 }
 
 #page-home main a span {
@@ -93,7 +100,7 @@
     height: 72px;
 
     border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 20px;
 
     background-color: rgba(0, 0, 0, 0.329);
 

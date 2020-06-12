@@ -20,6 +20,13 @@
 
     display: flex;
     align-items: center;
+
+    background-color: #255c3e57;
+    padding: 10px;
+    border-radius: 20px 0 20px 0;
+}
+#page-create-company header a:hover {
+    background-color: #508d6b57;
 }
 
 #page-create-company header a span {
@@ -93,7 +100,7 @@ form .field-group {
 
 form input,
 form select {
-    background-color: #f0f0f5;
+    background-color: #D3D7DB;
 
     border: 0;
     padding: 16px 24px;
@@ -149,7 +156,7 @@ form button:hover {
 }
 
 .items-grid li {
-    background-color: white;
+    background-color: #D3D7DB;
     list-style: none;
 
     border: 2px solid rgba(0, 0, 0, 0.61);
@@ -169,8 +176,18 @@ form button:hover {
     cursor: pointer;
 }
 
+.items-grid span {
+    margin-top: 12px;
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--title-color);
+}
+
 .items-grid li.selected {
-    background-attachment: #e1faec;
+    background: #e1faec;
     border: 2px solid #255c3e;
 }
 
