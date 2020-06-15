@@ -1,22 +1,23 @@
 @media (max-width: 1000px) { 
     #page-home {
         background-position-x: 70vw;
+        background-image: none;
     }
     #page-home .content {
         align-items: center;
         text-align: center;
     }
     #page-home header a {
-        position: initial;
-        bottom: 45px;
+        position: fixed;
+        bottom: 25px;
 
         left: 50%;
-        transform: translateZ(-50%);
+        transform: translateX(-50%);
     }
     #page-home main {
-        align-items: initial;
+        align-items: center;
     }
-    
+
     #page-create-company .field-group {
         flex-direction: column;
     }
@@ -49,4 +50,27 @@
     #page-home {
         background-position-y: 200px;
     }
+}
+
+@media (max-width: 445px) {
+    #page-create-company form {
+        padding: 30px;
+    }
+
+    #page-create-company .items-grid li {
+        width: 120px;
+        height: 90px;
+
+        margin: 0;
+        
+        padding: 7px;
+    }
+    #page-create-company .items-grid li img {
+        width: 60px;
+        height: 45px;
+    }
+    #page-create-company fieldset legend #segSpan {
+        text-align:end;
+    }
+    
 }

@@ -187,8 +187,8 @@ form button:hover {
 }
 
 .items-grid li.selected {
-    background: #e1faec;
-    border: 2px solid #255c3e;
+    background: #bdffd3;
+    border: 2px solid  #275a3d;
 }
 
 .items-grid li img,
