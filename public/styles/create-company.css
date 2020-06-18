@@ -152,7 +152,7 @@ form button:hover {
 .items-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+    gap: 15px;
 }
 
 .items-grid li {
@@ -162,7 +162,7 @@ form button:hover {
     border: 2px solid rgba(0, 0, 0, 0.61);
     border-radius: 8px;
 
-    height: 180px;
+    height: 190px;
 
     padding: 32px 24px 16px;
 
@@ -173,11 +173,14 @@ form button:hover {
 
     text-align: center;
 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+
     cursor: pointer;
 }
 
 .items-grid span {
-    margin-top: 12px;
+    margin-top: 3px;
     flex: 1;
 
     display: flex;

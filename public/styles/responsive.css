@@ -17,6 +17,9 @@
     #page-home main {
         align-items: center;
     }
+    #page-home main a {
+        width: 250px;
+    }
 
     #page-create-company .field-group {
         flex-direction: column;
