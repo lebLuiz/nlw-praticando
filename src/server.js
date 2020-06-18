@@ -32,7 +32,22 @@ server.get("/create-company", (req, res) => {
 });
 
 server.post("/savecompany", (req, res) => {
-   // AQUI ENTRA O SQLITE (DB) 
+   
+    // req.body: O corpo do nosso formulário
+    // console.log(req.body)
+
+    // inserir dados no banco de dados
+    /*const query = `
+        INSERT INTO places (
+            
+        ) 
+        VALUES ()
+    `*/
+
+})
+
+server.get("/search", (req, res) => {
+    return res.render("search-results.html", { total: 0 })
 })
 
 
