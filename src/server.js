@@ -1,11 +1,14 @@
 const express = require("express");
-const server = express();
 
-//Pegar o DB
-//const db = require("./database/db");
+
+const routes = require('./routes');
+const server = express();
 
 //Configurar pasta publica
 server.use(express.static("public"));
+
+//Habilitar o server para usar as rotas
+server.use(routes)
 
 //Habilitar o uso do req.body na aplicação
 server.use(express.urlencoded({ extended: true }));
