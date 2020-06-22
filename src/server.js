@@ -4,6 +4,9 @@ const express = require("express");
 const routes = require('./routes');
 const server = express();
 
+//Habilitar o uso do JSON
+server.use(express.json());
+
 //Configurar pasta publica
 server.use(express.static("public"));
 
@@ -19,6 +22,19 @@ nunjucks.configure("src/views", {
     express: server,
     noCache: true
 });
+
+// notFound
+server.use((req, res, next) => {
+    const error = new Error('Not Found')
+    error.status = 404
+    next(error)
+})
+
+//TRATANDO O ERRO - catch all
+server.use((error, req, res, next) => {
+    res.status(error.status || 500)
+    res.json({ error: error.message })
+})
 
 // Configurar caminhos da aplicação
 //Página inicial
