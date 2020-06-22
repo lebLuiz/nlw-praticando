@@ -1,9 +1,11 @@
 const knex = require("../database")
+const { json } = require("express")
 
 module.exports = {
     async index(req, res) {
         const results = await knex('companies')
 
+        //console.log(json(results))
         return res.json(results)
     },
 
