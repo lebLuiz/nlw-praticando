@@ -52,4 +52,4 @@ server.get("/search", (req, res) => {
 
 
 // Ligar o servidor:
-server.listen(3030);
+server.listen(3030, () => console.log('Server is running'));

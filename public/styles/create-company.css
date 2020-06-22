@@ -41,7 +41,7 @@
 
 form {
     background-color: whitesmoke;
-    box-shadow: 3px 1px 6px 4px #255c3e;
+    box-shadow: 0px 0px 4.5px #000000;
 
     margin: 50px auto;
 
@@ -79,11 +79,14 @@ form legend h2 {
 
 form legend span {
     font-size: 14.5px;
-    font-family: sans-serif;
 
     color: var(--title-color);
 
     margin-right: 20px;
+}
+
+form fieldset .field-group label {
+    font-size: 16px;
 }
 
 form .field {
