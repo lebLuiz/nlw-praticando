@@ -38,11 +38,16 @@ routes.post("/savecompany", (req, res) => {
 
 })
 
-routes.get("/search", async (req, res) => {
+routes.get("/search", async (req, res, next) => {
 
     //get data from DB
-    
+
     const search = req.query.search
+
+    var pega = CompanyController.index
+
+    // Pegando quantidade Registros
+    var total = pega.length
 
     if (search == "") {
         //search void
@@ -50,9 +55,24 @@ routes.get("/search", async (req, res) => {
         return res.render("search-results.html", { total: 0 })
     }
 
-    const results = await knex('companies')//.where(`city`, `LIKE`, `%${search}%;`)
-
-    console.log(results)
+    const results = await knex('companies')
+            .select({
+                company: 'companies.company',
+                image: 'companies.image',
+                cnpj: 'companies.cnpj',
+                responsible: 'companies.responsible',
+                address: 'companies.address',
+                address2: 'companies.address2',
+                state: 'companies.state',
+                city: 'companies.city',
+                items: 'companies.items',
+                phone: 'companies.phone',
+                email: 'companies.email'
+            }).where('city', 'LIKE', `%${search}%`);
+    
+    //return CompanyController.index()
+    
+    return res.render("search-results.html", { results: results, total });
 
 })
 

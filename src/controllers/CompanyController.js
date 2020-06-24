@@ -1,11 +1,23 @@
 const knex = require("../database")
-const { json } = require("express")
 
 module.exports = {
     async index(req, res) {
-        const results = await knex('companies')
+        //get data from DB
 
-        //console.log(json(results))
+        const results = await knex('companies')
+            .select({
+                company: 'companies.company',
+                image: 'companies.image',
+                cnpj: 'companies.responsible',
+                address: 'companies.address',
+                address2: 'companies.address2',
+                state: 'companies.state',
+                city: 'companies.city',
+                items: 'companies.items',
+            })
+        //.where(`city`, `LIKE`, `%${search}%;`)
+
+        //return console.log(results)
         return res.json(results)
     },
 
@@ -36,18 +48,18 @@ module.exports = {
             const { id } = req.params
 
             await knex('companies')
-            .update({
-                company,
-                cnpj,
-                responsible,
-                phone,
-                email,
-                address,
-                address2,
-                state,
-                city
-            })
-            .where({ id })
+                .update({
+                    company,
+                    cnpj,
+                    responsible,
+                    phone,
+                    email,
+                    address,
+                    address2,
+                    state,
+                    city
+                })
+                .where({ id })
 
             return res.send()
         } catch (error) {
@@ -60,8 +72,8 @@ module.exports = {
             const { id } = req.params
 
             await knex('companies')
-            .where({ id })
-            .del()
+                .where({ id })
+                .del()
 
             return res.send()
         } catch (error) {

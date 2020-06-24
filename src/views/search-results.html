@@ -18,32 +18,32 @@
 
             <h4>
                 <strong> {{ total }}
-                    pontos</strong>
-                    encontrados
+                    empresas</strong>
+                    encontradas
             </h4>
 
             <div class="cards">
 
-                {% for place in places %}
+                {% for result in results %}
                     <div class="card">
-                        <img src="{{ place.image }}" alt="{{ place.name }}">
-                        <h1>{{ place.name }}</h1>
-                        <h3>{{ place.items }}</h3>
+                        <img src="{{ result.image }}" alt="{{ result.company }}">
+                        <h1>{{ result.company }}</h1>
+                        <h3>{{ result.items }}</h3>
                         <p>
-                            {{ place.reponsible }}
+                            {{ result.responsible }}
                             <br>
-                            {{ place.cnpj }}
+                            {{ result.cnpj }}
                             <br>
-                            {{ place.phone }}
+                            {{ result.phone }}
                             <br>
-                            {{ place.email }}
+                            {{ result.email }}
                             <br>
-                            {{ place.city }}
-                            {{ place.state }}
+                            {{ result.city }}
+                            {{ result.state }}
                             <br>
-                            {{ place.address }}
+                            {{ result.address }}
                             <br>
-                            {{ place.address2 }}
+                            {{ result.address2 }}
                         </p>
                     </div>
                 {% endfor %}

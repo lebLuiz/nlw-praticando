@@ -74,6 +74,8 @@
 
     font-size: 16px;
     color: #6c6c80;
+
+    outline: none;
 }
 
 #modal form button {
