@@ -30,9 +30,10 @@
                         <h1>{{ result.company }}</h1>
                         <h3>{{ result.items }}</h3>
                         <p>
-                            {{ result.responsible }}
+                            <strong>Responsável: </strong>{{ result.responsible }}
                             <br>
-                            {{ result.cnpj }}
+                            <strong>CNPJ: </strong>{{ result.cnpj }}
+                            <br>
                             <br>
                             {{ result.phone }}
                             <br>
@@ -40,6 +41,7 @@
                             <br>
                             {{ result.city }}
                             {{ result.state }}
+                            <br>
                             <br>
                             {{ result.address }}
                             <br>
@@ -51,7 +53,7 @@
             </div>
         {%else%}
 
-            <h4><strong>Nenhum</strong> local encontrado</h4>
+            <h4><strong>Nenhuma</strong> empresa encontrada</h4>
 
         {% endif %}
     </main>

@@ -1,6 +1,3 @@
-const { table } = require("..");
-const knex = require("..");
-
 exports.up = knex => knex.schema.alterTable('companies', table => {
     table.text('phone')
     table.text('email')
