@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 
 const routes = require('./routes');
 const server = express();
@@ -6,14 +7,20 @@ const server = express();
 //Habilitar o uso do JSON
 server.use(express.json());
 
+//Habilitar o uso do req.body na aplicação
+server.use(express.urlencoded({ extended: true }));
+
+// FICA CRITÉRIO UTILIZAR O bodyParser OU O Express PARA AUTORIZAR O USO DO BODY
+//server.use(bodyParser.json())
+//server.use(bodyParser.urlencoded({ extended: true }))
+
 //Configurar pasta publica
 server.use(express.static("public"));
 
 //Habilitar o server para usar as rotas
 server.use(routes)
 
-//Habilitar o uso do req.body na aplicação
-server.use(express.urlencoded({ extended: true }));
+
 
 // Utilizando Template engine
 const nunjucks = require("nunjucks");

@@ -2,73 +2,74 @@ const knex = require("../database")
 const { json } = require("express")
 
 module.exports = {
+    
+    // BUSCA ESTÁ COM ERRO
     async index(req, res) {
-        //get data from DB
 
-        const results = await knex('companies')
-            .select({
-                company: 'companies.company',
-                image: 'companies.image',
-                cnpj: 'companies.responsible',
-                address: 'companies.address',
-                address2: 'companies.address2',
-                state: 'companies.state',
-                city: 'companies.city',
-                items: 'companies.items',
-            })
-        //.where(`city`, `LIKE`, `%${search}%;`)
+        // get city search
+        const search = req.query.search
+    
+        if (search == "") {
+            //search void
+            console.log('Nao tem empresa nessa city')
+            return res.render("search-results.html", { total: 0 })
+        } else{
+    
+            /*const results =*/ await knex('companies')
+            .select([{
+                company: 'company',
+                image: 'image',
+                cnpj: 'cnpj',
+                responsible: 'responsible',
+                address: 'address',
+                address2: 'address2',
+                state: 'state',
+                city: 'city',
+                items: 'items',
+                phone: 'phone',
+                email: 'email'
+            }])
+            .where('city', 'LIKE', `%${search}%`)
+            .then( rows =>
+                rows.map(row => {
+                    const total = rows.length
+    
+                    console.log(row)
 
-        //return console.log(results)
-        return res.json(results)
+                    if(row){
+                        return res.render("search-results.html", { results: rows, total });
+                        
+                    }
+                    
+                    return res.render("search-results.html", { total: 0 })
+                }));
+        }
     },
 
     async create(req, res, next) {
         try {
 
-            /*const company = document.getElementsByName('company')
-            const image = document.getElementsByName('image')
-            const cnpj = document.getElementsByName('cnpj')
-            const responsible = document.getElementsByName('responsible')
-            const phone = document.getElementsByName('phone')
-            const email = document.getElementsByName('email')
-            const address = document.getElementsByName('address')
-            const address2 = document.getElementsByName('address2')
-            const state = document.getElementsByName('state')
-            const city = document.getElementsByName('city')
-            const items = document.getElementsByName('items')*/
-
-            /*const values = [
-                req.body.company,
-                req.body.image,
-                req.body.cnpj,
-                req.body.responsible,
-                req.body.phone,
-                req.body.email,
-                req.body.address,
-                req.body.address2,
-                req.body.state,
-                req.body.city,
-                req.body.items,
-            ]*/
-
             const { company, image, cnpj, responsible, phone, email, address, address2, state, city, items } = req.body
 
-            await knex('companies').insert([
-                company,
-                image,
-                cnpj,
-                responsible,
-                phone,
-                email,
-                address,
-                address2,
-                state,
-                city,
-                items
-            ])
-
-            console.log('Cadastrou!')
-            return res.status(201).send()
+            await knex('companies').insert([{
+                company: `${company}`,
+                image: `${image}`,
+                cnpj: `${cnpj}`,
+                responsible: `${responsible}`,
+                phone: `${phone}`,
+                email: `${email}`,
+                address: `${address}`,
+                address2: `${address2}`,
+                state: `${state}`,
+                city: `${city}`,
+                items: `${items}`
+            }]).then(result => {
+                console.log('Cadastrou!')
+                return res.render("create-company.html", { saved: true })
+                
+            }).catch((err) => {
+                console.log(err)
+            })
 
         } catch (error) {
             next(error);
