@@ -1,48 +1,32 @@
 const knex = require("../database")
-const { json } = require("express")
 
 module.exports = {
-    
-    // BUSCA ESTÁ COM ERRO
-    async index(req, res) {
 
+    async index(req, res, next) {
+
+        try {
         // get city search
         const search = req.query.search
-    
+
+        const results = await knex('companies')
+            .where('city', 'LIKE', `%${search}%`)
+            .select('companies.*')
+
+        const serializedCompanies = results.map( result => {
+            return {
+                ...result
+            }
+        } )
+
         if (search == "") {
             //search void
             console.log('Nao tem empresa nessa city')
             return res.render("search-results.html", { total: 0 })
-        } else{
-    
-            /*const results =*/ await knex('companies')
-            .select([{
-                company: 'company',
-                image: 'image',
-                cnpj: 'cnpj',
-                responsible: 'responsible',
-                address: 'address',
-                address2: 'address2',
-                state: 'state',
-                city: 'city',
-                items: 'items',
-                phone: 'phone',
-                email: 'email'
-            }])
-            .where('city', 'LIKE', `%${search}%`)
-            .then( rows =>
-                rows.map(row => {
-                    const total = rows.length
-    
-                    console.log(row)
+        }
+            return res.render("search-results.html", { results: serializedCompanies, total: serializedCompanies.length } );
 
-                    if(row){
-                        return res.render("search-results.html", { results: rows, total });
-                        
-                    }
-                    
-                    return res.render("search-results.html", { total: 0 })
-                }));
+        } catch (error) {
+            next(error)
         }
     },
 
