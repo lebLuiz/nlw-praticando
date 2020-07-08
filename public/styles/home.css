@@ -2,9 +2,9 @@
 #page-home {
     height: 100vh;
 
-    background: url('../assets/background-home.png') no-repeat ;
-    background-position: 55vw 230px;
-    background-size: 400px;
+    background: url('../assets/background-home.svg') no-repeat ;
+    background-position: 53vw 230px;
+    background-size: 500px;
 }
 
 
