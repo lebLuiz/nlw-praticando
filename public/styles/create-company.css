@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-#page-create-company header a {
+#page-create-company header #aAgo {
     color: var(--title-color);
     font-weight: bold;
 
@@ -25,11 +25,11 @@
     padding: 10px;
     border-radius: 20px 0 20px 0;
 }
-#page-create-company header a:hover {
+#page-create-company header #aAgo:hover {
     background-color: #508d6b57;
 }
 
-#page-create-company header a span {
+#page-create-company header #aAgo span {
     margin-right: 16px;
     background-image: url('../assets/arrow-left.svg');
 

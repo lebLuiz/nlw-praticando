@@ -30,7 +30,7 @@ body::after {
     align-items: center;
 }
 
-#page-search-results header a {
+#page-search-results header #aAgo {
     color: var(--title-color);
     font-weight: bold;
 
@@ -41,11 +41,11 @@ body::after {
     padding: 10px;
     border-radius: 20px 0 20px 0;
 }
-#page-search-results header a:hover {
+#page-search-results header #aAgo:hover {
     background-color: #508d6b57;
 }
 
-#page-search-results header a span {
+#page-search-results header #aAgo span {
     margin-right: 16px;
     background-image: url('../assets/arrow-left.svg');
 
