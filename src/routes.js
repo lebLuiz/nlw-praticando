@@ -24,6 +24,8 @@ routes.get("/create-company", (req, res) => {
     return res.render("create-company.html");
 });
 
+routes.get("/company/:id", CompanyController.getById)
+
 routes.post("/savecompany", CompanyController.create)
 
 routes.get("/search", CompanyController.index)

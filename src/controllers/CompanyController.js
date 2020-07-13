@@ -30,6 +30,23 @@ module.exports = {
         }
     },
 
+    async getById(req, res, next) {
+
+        try {
+
+            const { id } = req.params;
+
+            const company = await knex('companies')
+            .where({ id })
+
+            return res.json(company).send();
+
+        } catch (error) {
+            next(error);
+        }
+
+    },
+
     async create(req, res, next) {
         try {
 
@@ -47,7 +64,7 @@ module.exports = {
                 state: `${state}`,
                 city: `${city}`,
                 items: `${items}`
-            }]).then(result => {
+            }]).then((result) => {
                 console.log('Cadastrou!')
                 return res.render("create-company.html", { saved: true })
                 
