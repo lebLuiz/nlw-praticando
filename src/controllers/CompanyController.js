@@ -20,7 +20,7 @@ module.exports = {
 
         if (search == "") {
             //search void
-            console.log('Nao tem empresa nessa city')
+            console.log('Nao tem empresa nessa cidade')
             return res.render("search-results.html", { total: 0 })
         }
             return res.render("search-results.html", { results: serializedCompanies, total: serializedCompanies.length } );
