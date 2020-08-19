@@ -13,6 +13,123 @@
 
 {% block content %}
     {% include "partials/page-header.html" %}
+
+    {% if getBy %}
+        <form action="/savecompany" method="POST">
+
+        <h1 style="color: rgb(37, 11, 78);"><u>Alterar Empresa</u></h1>
+
+        {% for c in company %}
+
+        <fieldset>
+            <legend>
+                <h2>Dados da Entidade</h2>
+            </legend>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="company">Nome da Empresa</label>
+                    <input type="text" name="company" required="required" value="{{c.company}}">
+                </div>
+
+                <div class="field">
+                    <label for="image">Imagem da Empresa</label>
+                    <input type="url" name="image" placeholder="http://" required="required" value="{{c.image}}" >
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" class="cpf-mask" name="cnpj" required="required"
+                    placeholder="00.000.000/0000-00" value="{{c.cnpj}}" >
+                </div>
+
+                <div class="field">
+                    <label for="responsible">Responsável</label>
+                    <input type="text" name="responsible" required="required" value="{{c.responsible}}">
+                </div>
+            </div>
+            
+            <div class="field-group">
+                <div class="field">
+                    <label for="phone">Telefone</label>
+                    <input type="text" name="phone" required="required"
+                    placeholder="(00) 00000-0000" value="{{c.phone}}" >
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" required="required" value="{{c.email}}" >
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="address">Endereço</label>
+                    <input type="text" name="address" required="required" value="{{c.address}}" >
+                </div>
+
+                <div class="field">
+                    <label for="address2">Número/Complemento</label>
+                    <input type="text" name="address2" required="required" value="{{c.address2}}">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="state">Estado</label>
+                    <select name="uf" required="required">
+                        <option value="">{{c.state}}</option>
+                    </select>
+
+                    <input type="hidden" name="state">
+                </div>
+
+                <div class="field">
+                    <label for="city">Cidade</label>
+                    <select name="city" disabled="disabled" required="required">
+                        <option value="">{{c.city}}</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <h2>Ramos de Atuação</h2>
+                <span id="segSpan">Selecione os ramos relacionados</span>
+            </legend>
+
+            <div class="items-grid">
+                <li data-id="Industrial">
+                    <img src="/assets/industrial.png" alt="Industrial">
+                    <span>Industrial</span>
+                </li>
+
+                <li data-id="Comercial">
+                    <img src="/assets/comercial.png" alt="Comercial">
+                    <span>Comercial</span>
+                </li>
+
+                <li data-id="Prestação de Serviços">
+                    <img src="/assets/prestacaoServicos.png" alt="Prestação de Serviços">
+                    <span>Prestação de Serviços</span>
+                </li>
+
+            </div>
+
+            <input type="hidden" name="items">
+        </fieldset>
+
+        {% endfor %}
+
+        <button type="submit">Salvar Empresa</button>
+
+        </form>
+
+    {%else%}
+
     <form action="/savecompany" method="POST">
 
         <h1>Cadastro de Empresa</h1>
@@ -37,7 +154,8 @@
             <div class="field-group">
                 <div class="field">
                     <label for="cnpj">CNPJ</label>
-                    <input type="text" name="cnpj" required="required">
+                    <input type="text" class="cpf-mask" name="cnpj" required="required"
+                    placeholder="00.000.000/0000-00">
                 </div>
 
                 <div class="field">
@@ -49,7 +167,8 @@
             <div class="field-group">
                 <div class="field">
                     <label for="phone">Telefone</label>
-                    <input type="text" name="phone" required="required">
+                    <input type="text" name="phone" required="required"
+                    placeholder="(00) 00000-0000" >
                 </div>
 
                 <div class="field">
@@ -119,6 +238,8 @@
         <button type="submit">Cadastrar Empresa</button>
 
     </form>
+
+    {% endif %}
 
 {% endblock content %}
 

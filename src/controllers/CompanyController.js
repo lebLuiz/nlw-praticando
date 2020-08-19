@@ -39,7 +39,16 @@ module.exports = {
             const company = await knex('companies')
             .where({ id })
 
-            return res.json(company).send();
+            // const serializedCompany = company.map( result => {
+            //     return {
+            //         ...result
+            //     }
+            // } )
+
+            console.log(company);
+
+            //return res.json(company).send();
+            return res.render("create-company.html", {getBy: true, company});
 
         } catch (error) {
             next(error);

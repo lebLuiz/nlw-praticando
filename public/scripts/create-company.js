@@ -60,7 +60,7 @@ function getCities(event) {
             citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
         }
 
-        //abilitando a propriedade 'disable' do campo 'Cidade'
+        //habilitando a propriedade 'disable' do campo 'Cidade'
         citySelect.disabled = false
 
     } )
