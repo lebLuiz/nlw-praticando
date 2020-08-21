@@ -28,7 +28,7 @@ routes.get("/company/:id", CompanyController.getById)
 
 routes.post("/savecompany", CompanyController.create)
 
-routes.get("/create-company/:id", CompanyController.getById)
+routes.put("/savecompany/:id", CompanyController.update)
 
 routes.get("/search", CompanyController.index)
 

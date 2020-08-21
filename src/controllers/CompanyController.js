@@ -23,7 +23,7 @@ module.exports = {
             console.log('Nao tem empresa nessa cidade')
             return res.render("search-results.html", { total: 0 })
         }
-            return res.render("search-results.html", { results: serializedCompanies, total: serializedCompanies.length } );
+            return res.render("search-results.html", { results: serializedCompanies, total: serializedCompanies.length, search: search } );
 
         } catch (error) {
             next(error)
@@ -75,7 +75,7 @@ module.exports = {
                 items: `${items}`
             }]).then((result) => {
                 console.log('Cadastrou!')
-                return res.render("create-company.html", { saved: true })
+                return res.render("create-company.html", { created: true })
                 
             }).catch((err) => {
                 console.log(err)
@@ -88,24 +88,29 @@ module.exports = {
 
     async update(req, res, next) {
         try {
-            const { company, cnpj, responsible, phone, email, address, address2, state, city } = req.body
+            const { company, image, cnpj, responsible, phone, email, address, address2, state, city, items } = req.body
+
             const { id } = req.params
 
             await knex('companies')
-                .update({
-                    company,
-                    cnpj,
-                    responsible,
-                    phone,
-                    email,
-                    address,
-                    address2,
-                    state,
-                    city
-                })
-                .where({ id })
+                .update([{
+                    company: `${company}`,
+                    image: `${image}`,
+                    cnpj: `${cnpj}`,
+                    responsible: `${responsible}`,
+                    phone: `${phone}`,
+                    email: `${email}`,
+                    address: `${address}`,
+                    address2: `${address2}`,
+                    state: `${state}`,
+                    city: `${city}`,
+                    items: `${items}`
+                }]).where({ id })
+                .then( companyy => {
+                    console.log('ATUALIZOU!');
+                    return res.render("create-company.html", {saved: true, id});
+                } )
 
-            return res.send()
         } catch (error) {
             next(error)
         }

@@ -1,11 +1,15 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 
+const methodOverride = require('method-override');
+
 const routes = require('./routes');
 const server = express();
 
 //Habilitar o uso do JSON
 server.use(express.json());
+
+server.use(methodOverride('X-HTTP-Method-Override'));
 
 //Habilitar o uso do req.body na aplicação
 server.use(express.urlencoded({ extended: true }));

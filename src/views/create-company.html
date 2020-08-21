@@ -15,11 +15,12 @@
     {% include "partials/page-header.html" %}
 
     {% if getBy %}
-        <form action="/savecompany" method="POST">
-
-        <h1 style="color: rgb(37, 11, 78);"><u>Alterar Empresa</u></h1>
 
         {% for c in company %}
+
+        <form action="/savecompany/{{c.id}}" method="POST">
+
+        <h1 style="color: rgb(37, 11, 78);"><u>Alterar Empresa</u></h1>        
 
         <fieldset>
             <legend>
@@ -122,11 +123,11 @@
             <input type="hidden" name="items">
         </fieldset>
 
-        {% endfor %}
-
         <button type="submit">Salvar Empresa</button>
 
         </form>
+
+        {% endfor %}
 
     {%else%}
 
@@ -244,8 +245,10 @@
 {% endblock content %}
 
 {% block modal %}
-    {% if saved %}
+    {% if created %}
         {% include "partials/company-created.html" %}
+    {% elif saved %}}
+        {% include "partials/company-saved.html" %}}
     {% endif %}
 {% endblock modal %}
 
